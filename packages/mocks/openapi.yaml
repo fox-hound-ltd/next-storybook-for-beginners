@@ -54,8 +54,303 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Dashboard.Order'
+  /v1/employee:
+    get:
+      operationId: V1Employee_List
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Employee.Employee'
+    post:
+      operationId: V1Employee_Create
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee.CreateOrUpdate'
+  /v1/employee/{id}:
+    get:
+      operationId: V1Employee_Get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+    put:
+      operationId: V1Employee_Update
+      parameters:
+        - $ref: '#/components/parameters/Employee.Employee.id'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  format: password
+                  description: パスワード
+                name:
+                  type: string
+                  description: 名前
+                  x-faker: name.findName
+                email:
+                  type: string
+                  format: email
+                  description: メールアドレス
+                phone:
+                  type: string
+                  description: 電話番号
+                  x-faker: phone.phoneNumber
+                initial:
+                  type: string
+                  minLength: 1
+                  maxLength: 1
+                  description: イニシャル文字
+                hiredDate:
+                  type: string
+                  format: date
+                  description: 入社日
+                color:
+                  allOf:
+                    - $ref: '#/components/schemas/Color'
+                  description: カラーコード
+                isCalendarVisible:
+                  type: boolean
+                  description: カレンダー表示フラグ
+                role:
+                  allOf:
+                    - $ref: '#/components/schemas/Role'
+                  description: 権限
+              required:
+                - password
+                - name
+                - email
+                - phone
+                - initial
+                - hiredDate
+                - color
+                - isCalendarVisible
+                - role
+    delete:
+      operationId: V1Employee_Delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+  /v1/partner:
+    get:
+      operationId: V1Partner_List
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Partner.Partner'
+    post:
+      operationId: V1Partner_Create
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.Partner'
+  /v1/partner/{id}:
+    get:
+      operationId: V1Partner_Get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+    put:
+      operationId: V1Partner_Update
+      parameters:
+        - $ref: '#/components/parameters/Partner.Partner.id'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 名前
+                  x-faker: name.findName
+                initial:
+                  type: string
+                  minLength: 1
+                  maxLength: 1
+                  description: イニシャル文字
+                phone:
+                  type: string
+                  description: 電話番号
+                  x-faker: phone.phoneNumber
+              required:
+                - name
+                - initial
+                - phone
+    delete:
+      operationId: V1Partner_Delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
 components:
+  parameters:
+    Employee.Employee.id:
+      name: id
+      in: path
+      required: true
+      description: ID
+      schema:
+        type: string
+        format: uuid
+    Partner.Partner.id:
+      name: id
+      in: path
+      required: true
+      description: ID
+      schema:
+        type: string
+        format: uuid
   schemas:
+    Color:
+      type: string
+      enum:
+        - '#ffffff'
+        - '#000000'
+        - '#ff0000'
+        - '#00ff00'
+        - '#0000ff'
+      description: カラーコード
     Dashboard.Chart:
       type: object
       required:
@@ -134,6 +429,100 @@ components:
           type: string
           x-faker: name.findName
       description: ダッシュボードの注文情報
+    Employee.CreateOrUpdate:
+      type: object
+      required:
+        - password
+      properties:
+        password:
+          type: string
+          format: password
+          description: パスワード
+      allOf:
+        - $ref: '#/components/schemas/Employee.Employee'
+      description: 社員登録・編集
+    Employee.Employee:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - phone
+        - initial
+        - hiredDate
+        - color
+        - isCalendarVisible
+        - role
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+        phone:
+          type: string
+          description: 電話番号
+          x-faker: phone.phoneNumber
+        initial:
+          type: string
+          minLength: 1
+          maxLength: 1
+          description: イニシャル文字
+        hiredDate:
+          type: string
+          format: date
+          description: 入社日
+        color:
+          allOf:
+            - $ref: '#/components/schemas/Color'
+          description: カラーコード
+        isCalendarVisible:
+          type: boolean
+          description: カレンダー表示フラグ
+        role:
+          allOf:
+            - $ref: '#/components/schemas/Role'
+          description: 権限
+      description: 社員
+    Partner.Partner:
+      type: object
+      required:
+        - id
+        - name
+        - initial
+        - phone
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        initial:
+          type: string
+          minLength: 1
+          maxLength: 1
+          description: イニシャル文字
+        phone:
+          type: string
+          description: 電話番号
+          x-faker: phone.phoneNumber
+      description: パートナー
+    Role:
+      type: string
+      enum:
+        - admin
+        - employee
+      description: 権限
     Shared.Date:
       type: string
       format: date
