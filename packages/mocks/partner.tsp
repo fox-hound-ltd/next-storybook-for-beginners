@@ -17,7 +17,7 @@ model Partner {
   /**
    * 名前
    */
-  @TypeSpec.OpenAPI.extension("x-faker", "name.findName")
+  @TypeSpec.OpenAPI.extension("x-faker", "company.companyName")
   name: string;
 
   /**

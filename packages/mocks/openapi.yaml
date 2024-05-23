@@ -4,9 +4,72 @@ info:
   version: 0.0.0
 tags: []
 paths:
+  /v1/aggregate/manhour/{date}:
+    get:
+      operationId: V1Aggregate_ManHour
+      description: 現場工数集計
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Shared.Date'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Aggregate.ManHour'
+  /v1/aggregate/nightshift:
+    get:
+      operationId: V1Aggregate_NightShift
+      description: 夜間勤務集計
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Aggregate.NightShift'
+  /v1/aggregate/paidvacation:
+    get:
+      operationId: V1Aggregate_PaidVacation
+      description: 有給休暇集計
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Aggregate.PaidVacation'
   /v1/dashboard/chart:
     get:
       operationId: V1_Chart
+      description: 日時売上推移
       parameters: []
       responses:
         '200':
@@ -23,6 +86,7 @@ paths:
   /v1/dashboard/deposit:
     get:
       operationId: V1_Deposit
+      description: 入金情報
       parameters: []
       responses:
         '200':
@@ -39,6 +103,7 @@ paths:
   /v1/dashboard/order:
     get:
       operationId: V1_Order
+      description: 受注情報
       parameters: []
       responses:
         '200':
@@ -57,6 +122,7 @@ paths:
   /v1/employee:
     get:
       operationId: V1Employee_List
+      description: 一覧取得
       parameters: []
       responses:
         '200':
@@ -74,6 +140,7 @@ paths:
                       $ref: '#/components/schemas/Employee.Employee'
     post:
       operationId: V1Employee_Create
+      description: 登録
       parameters: []
       responses:
         '200':
@@ -96,6 +163,7 @@ paths:
   /v1/employee/{id}:
     get:
       operationId: V1Employee_Get
+      description: 詳細取得
       parameters:
         - name: id
           in: path
@@ -116,6 +184,7 @@ paths:
                     $ref: '#/components/schemas/Employee.Employee'
     put:
       operationId: V1Employee_Update
+      description: 更新
       parameters:
         - $ref: '#/components/parameters/Employee.Employee.id'
       responses:
@@ -185,6 +254,7 @@ paths:
                 - role
     delete:
       operationId: V1Employee_Delete
+      description: 削除
       parameters:
         - name: id
           in: path
@@ -206,6 +276,7 @@ paths:
   /v1/partner:
     get:
       operationId: V1Partner_List
+      description: 一覧取得
       parameters: []
       responses:
         '200':
@@ -223,6 +294,7 @@ paths:
                       $ref: '#/components/schemas/Partner.Partner'
     post:
       operationId: V1Partner_Create
+      description: 登録
       parameters: []
       responses:
         '200':
@@ -245,6 +317,7 @@ paths:
   /v1/partner/{id}:
     get:
       operationId: V1Partner_Get
+      description: 詳細取得
       parameters:
         - name: id
           in: path
@@ -265,6 +338,7 @@ paths:
                     $ref: '#/components/schemas/Partner.Partner'
     put:
       operationId: V1Partner_Update
+      description: 更新
       parameters:
         - $ref: '#/components/parameters/Partner.Partner.id'
       responses:
@@ -289,7 +363,7 @@ paths:
                 name:
                   type: string
                   description: 名前
-                  x-faker: name.findName
+                  x-faker: company.companyName
                 initial:
                   type: string
                   minLength: 1
@@ -305,6 +379,7 @@ paths:
                 - phone
     delete:
       operationId: V1Partner_Delete
+      description: 削除
       parameters:
         - name: id
           in: path
@@ -342,6 +417,89 @@ components:
         type: string
         format: uuid
   schemas:
+    Aggregate.ManHour:
+      type: object
+      required:
+        - name
+        - startAt
+        - endAt
+        - manHour
+        - totalManHour
+      properties:
+        name:
+          type: string
+          description: 現場名
+          x-faker: address.city
+        startAt:
+          type: string
+          description: 現場開始日時
+          x-faker: date.past
+        endAt:
+          type: string
+          description: 現場終了日時
+          x-faker: date.future
+        manHour:
+          type: integer
+          format: int32
+          description: 対象月の工数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 30
+        totalManHour:
+          type: integer
+          format: int32
+          description: 総工数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 500
+      description: 工数
+    Aggregate.NightShift:
+      type: object
+      required:
+        - name
+        - count
+      properties:
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        count:
+          type: integer
+          format: int32
+          minimum: 0
+          description: 回数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 30
+      description: 夜間勤務回数
+    Aggregate.PaidVacation:
+      type: object
+      required:
+        - name
+        - count
+        - aggregationPeriod
+      properties:
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        count:
+          type: integer
+          format: int32
+          minimum: 0
+          description: 有給休暇日数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 30
+        aggregationPeriod:
+          type: string
+          description: 人ごとによる今日までの集計期間
+          x-faker: date.past
+      description: 今日までの有給休暇
     Color:
       type: string
       enum:
@@ -506,7 +664,7 @@ components:
         name:
           type: string
           description: 名前
-          x-faker: name.findName
+          x-faker: company.companyName
         initial:
           type: string
           minLength: 1
