@@ -12,7 +12,7 @@ model Employee {
    * ID
    */
   @format("uuid")
-  id: string;
+  id?: string;
 
   /**
    * 名前
@@ -29,8 +29,7 @@ model Employee {
   /**
    * 電話番号
    */
-  @TypeSpec.OpenAPI.extension("x-faker", "phone.phoneNumber")
-  phone: string;
+  phone: Shared.PhoneNumber;
 
   /**
    * イニシャル文字

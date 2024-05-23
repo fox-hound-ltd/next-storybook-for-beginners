@@ -46,13 +46,14 @@ model ManHour {
    * 現場開始日時
    */
   @TypeSpec.OpenAPI.extension("x-faker", "date.past")
-  startAt: string;
+  startAt: Shared.Date;
 
   /**
    * 現場終了日時
    */
+  @format("date")
   @TypeSpec.OpenAPI.extension("x-faker", "date.future")
-  endAt: string;
+  endAt: Shared.Date;
 
   /**
    * 対象月の工数
@@ -117,6 +118,7 @@ model PaidVacation {
   /**
    * 人ごとによる今日までの集計期間
    */
+  @format("date")
   @TypeSpec.OpenAPI.extension("x-faker", "date.past")
   aggregationPeriod: string;
 }

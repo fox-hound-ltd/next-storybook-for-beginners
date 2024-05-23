@@ -5,6 +5,7 @@ import "./dashboard.tsp";
 import "./employee.tsp";
 import "./partner.tsp";
 import "./aggregate.tsp";
+import "./setting.tsp";
 
 using TypeSpec.Http;
 
@@ -12,6 +13,10 @@ using TypeSpec.Http;
   title: "Service",
 })
 namespace Service;
+
+model BaseResponse<T> {
+  data: T;
+}
 
 /**
  * ダッシュボードAPI
@@ -66,7 +71,10 @@ interface V1Employee {
    */
   @put
   @route("/{id}")
-  Update(...Employee.CreateOrUpdate): BaseResponse<Employee.Employee>;
+  Update(
+    @body data: Employee.CreateOrUpdate,
+    @format("uuid") @path id: string,
+  ): BaseResponse<Employee.Employee>;
   /**
    * 削除
    */
@@ -103,7 +111,10 @@ interface V1Partner {
    */
   @put
   @route("/{id}")
-  Update(...Partner.Partner): BaseResponse<Partner.Partner>;
+  Update(
+    @body data: Partner.Partner,
+    @format("uuid") @path id: string,
+  ): BaseResponse<Partner.Partner>;
   /**
    * 削除
    */
@@ -137,6 +148,61 @@ interface V1Aggregate {
   PaidVacation(): BaseResponse<Aggregate.PaidVacation[]>;
 }
 
-model BaseResponse<T> {
-  data: T;
+/**
+ * カレンダー休日設定API
+ */
+@route("/v1/setting/holiday")
+interface V1SettingHoliday {
+  /**
+   * 一覧取得
+   */
+  @get
+  @route("/{month}")
+  List(@path month: string): BaseResponse<Setting.Holiday[]>;
+  /**
+   * 詳細取得
+   */
+  @get
+  @route("/{id}")
+  Get(id: string): BaseResponse<Setting.Holiday>;
+  /**
+   * 登録
+   */
+  @post
+  @route("/")
+  Create(@body data: Setting.Holiday[]): BaseResponse<Setting.Holiday[]>;
+  /**
+   * 更新
+   */
+  @put
+  @route("/{id}")
+  Update(
+    @body data: Setting.Holiday,
+    @format("uuid") @path id: string,
+  ): BaseResponse<Setting.Holiday>;
+  /**
+   * 削除
+   */
+  @delete
+  @route("/{id}")
+  Delete(@format("uuid") @path id: string): BaseResponse<Setting.Holiday>;
+}
+
+/**
+ * デフォルトアサイン設定API
+ */
+@route("/v1/setting/defaultassign")
+interface V1DefaultAssign {
+  /**
+   * 取得
+   */
+  @get
+  @route("/")
+  Get(): BaseResponse<Setting.DefaultAssign>;
+  /**
+   * 更新
+   */
+  @put
+  @route("/")
+  Update(...Setting.DefaultAssign): BaseResponse<Setting.DefaultAssign>;
 }

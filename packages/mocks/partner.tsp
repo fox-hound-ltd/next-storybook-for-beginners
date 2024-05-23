@@ -12,7 +12,7 @@ model Partner {
    * ID
    */
   @format("uuid")
-  id: string;
+  id?: string;
 
   /**
    * 名前
@@ -30,6 +30,5 @@ model Partner {
   /**
    * 電話番号
    */
-  @TypeSpec.OpenAPI.extension("x-faker", "phone.phoneNumber")
-  phone: string;
+  phone: Shared.PhoneNumber;
 }
