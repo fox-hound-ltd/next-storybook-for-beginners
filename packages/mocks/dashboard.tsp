@@ -55,7 +55,24 @@ model Deposit {
   date: Shared.Date;
 }
 
+@TypeSpec.OpenAPI.extension(
+  "x-faker",
+  {
+    `datatype.number`: [
+      {
+        min: 0,
+        max: 5000,
+        precision: 100,
+      }
+    ],
+  }
+)
+scalar ChartAmount extends int32;
 /**
  * チャート情報
  */
-model Chart {}
+model Chart {
+  @minItems(0)
+  @maxItems(9)
+  amount: ChartAmount[];
+}

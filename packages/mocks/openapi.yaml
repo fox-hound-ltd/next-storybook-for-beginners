@@ -4,6 +4,22 @@ info:
   version: 0.0.0
 tags: []
 paths:
+  /v1/dashboard/chart:
+    get:
+      operationId: V1_Chart
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Dashboard.Chart'
   /v1/dashboard/deposit:
     get:
       operationId: V1_Deposit
@@ -40,6 +56,26 @@ paths:
                       $ref: '#/components/schemas/Dashboard.Order'
 components:
   schemas:
+    Dashboard.Chart:
+      type: object
+      required:
+        - amount
+      properties:
+        amount:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard.ChartAmount'
+          minItems: 0
+          maxItems: 9
+      description: チャート情報
+    Dashboard.ChartAmount:
+      type: integer
+      format: int32
+      x-faker:
+        datatype.number:
+          - min: 0
+            max: 5000
+            precision: 100
     Dashboard.Deposit:
       type: object
       required:

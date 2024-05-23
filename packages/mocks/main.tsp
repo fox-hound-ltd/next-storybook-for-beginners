@@ -18,6 +18,9 @@ interface V1 {
   @get
   @route("/deposit")
   Deposit(): BaseResponse<Dashboard.Deposit>;
+  @get
+  @route("/chart")
+  Chart(): BaseResponse<Dashboard.Chart>;
 }
 
 model BaseResponse<T> {
