@@ -28,12 +28,12 @@ async function getChartData() {
  * 売上情報の取得
  */
 async function getDepositData() {
-  return await api<ComponentProps<typeof Dashboard>['deposit']>('/dashboard/deposit');
+  return await api<ComponentProps<typeof Dashboard>['deposit']>('dashboard/deposit');
 }
 
 /**
  * 受注データの取得
  */
 async function getOrderData() {
-  return await api<ComponentProps<typeof Dashboard>['order']>('/dashboard/order');
+  return await api<ComponentProps<typeof Dashboard>['order']>('dashboard/order');
 }
