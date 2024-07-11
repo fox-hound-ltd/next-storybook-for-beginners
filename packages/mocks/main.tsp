@@ -165,8 +165,8 @@ interface V1SettingHoliday {
    * 一覧取得
    */
   @get
-  @route("/{month}")
-  List(@path month: string): BaseResponse<Setting.Holiday[]>;
+  @route("/")
+  List(@query month: string): BaseResponse<Setting.Holiday[]>;
   /**
    * 詳細取得
    */
