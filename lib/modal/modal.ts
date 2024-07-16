@@ -1,15 +1,19 @@
-import { useSetAtom } from 'jotai';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { atomWithReset, useResetAtom } from 'jotai/utils';
 
 import { MODAL_BODY_VARIANT } from './constants';
 import { ExtractModalExtraState, ModalState } from './types';
 
-export const modalState = atomWithReset<ModalState>({
+const modalState = atomWithReset<ModalState>({
   size: '',
   title: '',
   type: MODAL_BODY_VARIANT.CLOSE,
   extra: {},
 });
+
+export function useModalValue() {
+  return useAtomValue(modalState);
+}
 
 /**
  * 閉じる

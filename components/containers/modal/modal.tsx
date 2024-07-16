@@ -2,13 +2,12 @@
 
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useAtom } from 'jotai';
 
-import { MODAL_BODY_VARIANT, modalState, useCloseModal } from '../../../lib/modal';
+import { MODAL_BODY_VARIANT, useCloseModal, useModalValue } from '../../../lib/modal';
 import Confirm from './confirm';
 
 export default function Modal() {
-  const [state] = useAtom(modalState);
+  const state = useModalValue();
 
   const close = useCloseModal();
 
