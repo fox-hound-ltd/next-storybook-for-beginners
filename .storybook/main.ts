@@ -16,9 +16,7 @@ const config: StorybookConfig = {
   features: {
     experimentalRSC: true,
   },
-  docs: {
-    autodocs: 'tag',
-  },
+  docs: {},
   staticDirs: ['../public'],
   refs: {
     'design-system': {

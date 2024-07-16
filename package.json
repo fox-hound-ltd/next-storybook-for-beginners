@@ -42,16 +42,16 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^8.1.11",
-    "@storybook/addon-essentials": "^8.1.11",
-    "@storybook/addon-interactions": "^8.1.11",
-    "@storybook/addon-links": "^8.1.11",
-    "@storybook/addon-onboarding": "^8.1.11",
-    "@storybook/addon-themes": "^8.1.11",
-    "@storybook/blocks": "^8.1.11",
-    "@storybook/nextjs": "^8.1.11",
-    "@storybook/react": "^8.1.11",
-    "@storybook/test": "^8.1.11",
+    "@storybook/addon-a11y": "^8.2.4",
+    "@storybook/addon-essentials": "^8.2.4",
+    "@storybook/addon-interactions": "^8.2.4",
+    "@storybook/addon-links": "^8.2.4",
+    "@storybook/addon-onboarding": "^8.2.4",
+    "@storybook/addon-themes": "^8.2.4",
+    "@storybook/blocks": "^8.2.4",
+    "@storybook/nextjs": "^8.2.4",
+    "@storybook/react": "^8.2.4",
+    "@storybook/test": "^8.2.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
@@ -66,7 +66,7 @@
     "postcss-preset-env": "^9.6.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "storybook": "^8.1.11",
+    "storybook": "^8.2.4",
     "stylelint": "^16.7.0",
     "stylelint-config-recess-order": "^5.0.1",
     "stylelint-config-standard": "^36.0.1",
@@ -80,5 +80,5 @@
     "*.{css,scss,md,mdx,json,js,ts,tsx}": "prettier --write",
     "*.{css,scss}": "stylelint --fix"
   },
-  "packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74"
+  "packageManager": "pnpm@9.5.0+sha256.dbdf5961c32909fb030595a9daa1dae720162e658609a8f92f2fa99835510ca5"
 }
