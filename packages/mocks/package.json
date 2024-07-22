@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "dependencies": {
-    "@stoplight/prism-cli": "^5.8.2",
+    "@stoplight/prism-cli": "^5.8.3",
     "@typespec/compiler": "latest",
     "@typespec/http": "latest",
     "@typespec/openapi": "latest",
