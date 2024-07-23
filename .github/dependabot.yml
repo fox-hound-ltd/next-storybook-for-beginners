@@ -5,42 +5,6 @@ updates:
     schedule:
       interval: weekly
     groups:
-      storybook:
+      all:
         patterns:
-          - 'storybook'
-          - '@storybook/*'
-          - eslint-plugin-storybook
-      validation:
-        patterns:
-          - '@conform-to/*'
-          - zod
-      linter:
-        patterns:
-          - eslint
-          - 'typescript-eslint'
-          - 'eslint-plugin-*'
-          - 'eslint-config-*'
-          - stylelint
-          - 'stylelint-*'
-          - prettier
-          - 'prettier-*'
-          - '@trivago/prettier-plugin-sort-imports'
-          - lint-staged
-      mui:
-        patterns:
-          - '@mui/*'
-          - '@emotion/*'
-          - flexsearch
-          - notistack
-          - react-virtuoso
-      next:
-        patterns:
-          - next
-          - eslint-config-next
-          - tailwindcss
-          - postcss
-          - react
-          - react-dom
-          - '@types/react'
-          - '@types/react-dom'
-          - jotai
+          - '*'
