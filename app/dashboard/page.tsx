@@ -1,7 +1,6 @@
 import { ComponentProps } from 'react';
 
 import { api } from 'lib/api';
-
 import Dashboard from './dashboard';
 
 export default async function Page() {
