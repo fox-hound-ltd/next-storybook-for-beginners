@@ -6,7 +6,7 @@ import { DepositData } from './types';
 
 export default function Deposit({ data }: Readonly<DepositData>) {
   return (
-    <Paper className="flex h-48 flex-col p-2">
+    <Paper className="flex h-48 flex-col p-4">
       <Typography component="h2" variant="h6" color="primary" gutterBottom>
         Recent Deposits
       </Typography>
