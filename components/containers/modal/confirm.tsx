@@ -1,6 +1,6 @@
 import { Button, DialogActions, DialogContent, DialogContentText } from '@mui/material';
 
-import { ExtractModalExtraState, MODAL_BODY_VARIANT } from 'lib/modal';
+import { ExtractModalExtraState, type MODAL_BODY_VARIANT } from 'lib/modal';
 
 export default function Confirm({
   message,
