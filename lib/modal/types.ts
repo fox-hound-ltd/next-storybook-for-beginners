@@ -1,4 +1,4 @@
-import { MODAL_BODY_VARIANT } from './constants';
+import { type MODAL_BODY_VARIANT } from './constants';
 
 interface ModalStateBase<
   Type extends

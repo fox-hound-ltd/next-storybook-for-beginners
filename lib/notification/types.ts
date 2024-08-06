@@ -1,4 +1,4 @@
-import { NOTIFICATION_VARIANT } from './constants';
+import { type NOTIFICATION_VARIANT } from './constants';
 
 interface Notification {
   /**

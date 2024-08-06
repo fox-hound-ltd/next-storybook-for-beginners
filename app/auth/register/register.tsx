@@ -7,7 +7,7 @@ import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } fro
 import NextLink from 'next/link';
 import { useFormState } from 'react-dom';
 
-import { registerAction } from 'lib/actions/auth';
+import { type registerAction } from 'lib/actions/auth';
 import { validation } from 'lib/validations/auth';
 
 export default function Register({ onSubmit, registered }: { onSubmit: typeof registerAction; registered?: boolean }) {
