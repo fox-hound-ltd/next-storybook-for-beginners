@@ -10,7 +10,7 @@ const meta: Meta<typeof EmployeeList> = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[500px]">
+      <div className="w-[1500px]">
         <Story />
       </div>
     ),
