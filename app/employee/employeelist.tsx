@@ -1,31 +1,14 @@
 'use client';
 
-import { Avatar, Box, Button, Tab, Tabs } from '@mui/material';
+import { Avatar, Button, Tab, Tabs } from '@mui/material';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useState } from 'react';
 
-import { Employee } from './types';
-
-const employees: Employee[] = [
-  { name: 'サンプル', email: 'test99@example.com', phone: '080-1234-1234' },
-  { name: '八尋 祐輝', email: 'aoi15@gmail.com', phone: '080-1234-1234' },
-  { name: '北島 蓮也', email: 'aoi14@gmail.com', phone: '080-1234-1234' },
-  { name: '千々岩 友惟', email: 'aoi12@gmail.com', phone: '080-1234-1234' },
-  { name: '吉单 禮秀一', email: 'aoi11@gmail.com', phone: '080-1234-1234' },
-];
-
-const partners: Employee[] = [
-  { name: '赤星設備', email: 'partnerA@example.com', phone: '080-1234-1234' },
-  { name: '吉川空調設備', email: 'partnerB@example.com', phone: '080-1234-1234' },
-  { name: '田中空調設備', email: 'partnerC@example.com', phone: '080-1234-1234' },
-  { name: '阪口さん', email: 'partnerD@example.com', phone: '080-1234-1234' },
-  { name: '岩森', email: 'partnerE@example.com', phone: '080-1234-1234' },
-  { name: 'YMD', email: 'partnerF@example.com', phone: '080-1234-1234' },
-];
+import { Employee, Partner } from './types';
 
 const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF'];
 
-export default function EmployeeList() {
+export default function EmployeeList({ employees, partners }: { employees: Employee; partners: Partner }) {
   const [tabIndex, setTabIndex] = useState<number>(0);
 
   const handleTabChange = (event: React.SyntheticEvent, newIndex: number) => {
@@ -34,22 +17,20 @@ export default function EmployeeList() {
 
   return (
     <div className="p-4">
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <Typography component="h2" variant="h6" color="primary" gutterBottom align="center">
-          <strong>社員・協力会社</strong>
-        </Typography>
-      </Box>
-      <Tabs value={tabIndex} onChange={handleTabChange} aria-label="社員タブ">
-        <Tab label="社員一覧" />
-        <Tab label="協力会社一覧" />
+      <Typography className="font-noto-sans-jp text-center text-[22px] font-bold leading-[33px] text-blue-700">
+        <strong>社員・協力会社</strong>
+      </Typography>
+      <Tabs value={tabIndex} onChange={handleTabChange} aria-label="社員タブ" className="flex flex-row items-center">
+        <Tab label="社員一覧" className="font-noto-sans-jp text-left text-sm font-normal leading-6 tracking-wide" />
+        <Tab label="協力会社一覧" className="font-noto-sans-jp text-left text-sm font-normal leading-6 tracking-wide" />
       </Tabs>
       <Paper>
         <TabPanel value={tabIndex} index={0}>
-          <Box display="flex" justifyContent="flex-end">
+          <div className="flex justify-end">
             <Button type="submit" variant="contained">
               社員を登録＋
             </Button>
-          </Box>
+          </div>
           <TableContainer>
             <Table>
               <TableHead>
@@ -67,22 +48,26 @@ export default function EmployeeList() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {employees.map((employee, index) => (
+                {employees.data.map((employee, index) => (
                   <TableRow key={employee.email}>
                     <TableCell>
-                      <Box display="flex" alignItems="center">
-                        {employee.name !== 'サンプル' && (
+                      <div className="flex items-center">
+                        {employee.name === 'サンプル' ? (
+                          <div className="ml-8 rounded-full bg-white text-black">
+                            <span className="text-white">S</span>
+                          </div>
+                        ) : (
                           <Avatar sx={{ bgcolor: colors[index % colors.length] }}>{employee.name.charAt(0)}</Avatar>
                         )}
-                        <Box ml={2}>{employee.name}</Box>
-                      </Box>
+                        <div className="ml-2">{employee.name}</div>
+                      </div>
                     </TableCell>
                     <TableCell>{employee.email}</TableCell>
                     <TableCell>{employee.phone}</TableCell>
                     <TableCell>
-                      <Box display="flex" justifyContent="flex-end">
+                      <div className="flex justify-end">
                         <Button variant="outlined">編集</Button>
-                      </Box>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -91,11 +76,11 @@ export default function EmployeeList() {
           </TableContainer>
         </TabPanel>
         <TabPanel value={tabIndex} index={1}>
-          <Box display="flex" justifyContent="flex-end">
+          <div className="flex justify-end">
             <Button type="submit" variant="contained">
               協力会社を登録＋
             </Button>
-          </Box>
+          </div>
           <TableContainer>
             <Table>
               <TableHead>
@@ -110,19 +95,19 @@ export default function EmployeeList() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {partners.map((partner) => (
-                  <TableRow key={partner.email}>
+                {partners.data.map((partner) => (
+                  <TableRow key={partner.name}>
                     <TableCell>
-                      <Box display="flex" alignItems="center">
+                      <div className="flex items-center">
                         <Avatar>{partner.name.charAt(0)}</Avatar>
-                        <Box ml={2}>{partner.name}</Box>
-                      </Box>
+                        <div className="ml-2">{partner.name}</div>
+                      </div>
                     </TableCell>
                     <TableCell>{partner.phone}</TableCell>
                     <TableCell>
-                      <Box display="flex" justifyContent="flex-end">
+                      <div className="flex justify-end">
                         <Button variant="outlined">編集</Button>
-                      </Box>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -145,8 +130,15 @@ function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
-      {value === index && <Box p={3}>{children}</Box>}
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+      className={value === index ? 'p-3' : ''}
+      {...other}
+    >
+      {value === index && <div className="p-3">{children}</div>}
     </div>
   );
 }
