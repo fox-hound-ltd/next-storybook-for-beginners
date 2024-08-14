@@ -32,7 +32,7 @@ export default function EmployeeList({ employees, partners }: { employees: Emplo
             </Button>
           </div>
           <TableContainer>
-            <Table>
+            <Table size="small">
               <TableHead>
                 <TableRow>
                   <TableCell className="text-blue-700">
@@ -66,7 +66,9 @@ export default function EmployeeList({ employees, partners }: { employees: Emplo
                     <TableCell>{employee.phone}</TableCell>
                     <TableCell>
                       <div className="flex justify-end">
-                        <Button variant="outlined">編集</Button>
+                        <Button size="small" variant="outlined">
+                          編集
+                        </Button>
                       </div>
                     </TableCell>
                   </TableRow>
@@ -82,7 +84,7 @@ export default function EmployeeList({ employees, partners }: { employees: Emplo
             </Button>
           </div>
           <TableContainer>
-            <Table>
+            <Table size="small">
               <TableHead>
                 <TableRow>
                   <TableCell className="text-blue-700">
@@ -106,7 +108,9 @@ export default function EmployeeList({ employees, partners }: { employees: Emplo
                     <TableCell>{partner.phone}</TableCell>
                     <TableCell>
                       <div className="flex justify-end">
-                        <Button variant="outlined">編集</Button>
+                        <Button size="small" variant="outlined">
+                          編集
+                        </Button>
                       </div>
                     </TableCell>
                   </TableRow>

@@ -7,8 +7,6 @@ import EmployeeList from './employeelist';
 export default async function Page() {
   const employees = await getEmployees();
   const partners = await getPartners();
-  console.log(employees);
-  console.log(partners);
   return <EmployeeList employees={employees} partners={partners} />;
 }
 
