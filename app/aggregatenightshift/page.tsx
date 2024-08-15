@@ -6,7 +6,6 @@ import AggregateNightShiftComponent from './aggregatenightshift';
 
 export default async function Page() {
   const aggregatenightshifts = await getAggregateNightShiftComponent();
-  console.log(getAggregateNightShiftComponent);
   return <AggregateNightShiftComponent aggregatenightshifts={aggregatenightshifts} />;
 }
 
