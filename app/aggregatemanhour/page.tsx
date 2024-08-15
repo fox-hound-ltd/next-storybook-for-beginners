@@ -5,9 +5,10 @@ import { api } from 'lib/api';
 import AggregateManHourComponent from './aggregatemanhour';
 
 export default async function Page() {
-  const date = '2024-04-01';
+  const date = new Date()
+    .toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    .replaceAll('/', '-');
   const aggregatemanhours = await getAggregateManHourComponent(date);
-  console.log(aggregatemanhours);
   return <AggregateManHourComponent aggregatemanhours={aggregatemanhours} />;
 }
 

@@ -1,38 +1,42 @@
 'use client';
 
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material';
+import React from 'react';
 
 import { AggregateManHourData } from './types';
 
 export default function AggregateManHourComponent({ aggregatemanhours }: { aggregatemanhours: AggregateManHourData }) {
-  const [year, setYear] = useState('2024');
-  const [month, setMonth] = useState('04');
-
-  const handleDisplay = () => {
-    console.log(`表示する期間: ${year}年${month}月`);
-  };
+  const handleDisplay = () => {};
+  const currentYear = new Date().getFullYear();
+  const years = [];
+  for (let i = 0; i < 5; i++) {
+    years.push(currentYear - i);
+  }
 
   return (
     <div className="p-4">
-      <Typography className="font-noto-sans-jp text-center text-[22px] font-bold leading-[80px] text-blue-700">
+      <Typography className="font-noto-sans-jp text-center text-2xl font-bold leading-[80px] text-blue-700">
         <strong>工数集計</strong>
       </Typography>
-      <div className="mb-4 flex h-10 items-center">
-        <select
-          className="mr-2 w-36 rounded border border-gray-300 p-2"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        >
-          <option value="2024">2024年</option>
-          <option value="2023">2023年</option>
-          <option value="2022">2022年</option>
+      <div className="mb-2 flex items-center">
+        <select className="mr-2 h-10 w-36 rounded border border-gray-300 p-2 text-base">
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}年
+            </option>
+          ))}
         </select>
-        <select
-          className="mr-2 w-36 rounded border border-gray-300 p-2"
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-        >
+        <select className="mr-2 h-10 w-36 rounded border border-gray-300 p-2 text-base">
           <option value="01">1月</option>
           <option value="02">2月</option>
           <option value="03">3月</option>
@@ -46,44 +50,50 @@ export default function AggregateManHourComponent({ aggregatemanhours }: { aggre
           <option value="11">11月</option>
           <option value="12">12月</option>
         </select>
-        <Button variant="outlined" className="mr-2 bg-white p-1 text-blue-500" onClick={handleDisplay}>
+        <Button
+          variant="outlined"
+          className="mr-2 h-9 w-16 bg-white p-1 px-4 py-1.5 text-sm text-blue-500"
+          onClick={handleDisplay}
+        >
           表示
         </Button>
       </div>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell className="text-blue-700">
-                <strong>現場名</strong>
-              </TableCell>
-              <TableCell className="text-blue-700">
-                <strong>現場開始日時</strong>
-              </TableCell>
-              <TableCell className="text-blue-700">
-                <strong>現場最終日時</strong>
-              </TableCell>
-              <TableCell className="text-blue-700">
-                <strong>対象月の工数</strong>
-              </TableCell>
-              <TableCell className="text-blue-700">
-                <strong>総工数</strong>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {aggregatemanhours.data.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.startAt}</TableCell>
-                <TableCell>{item.endAt}</TableCell>
-                <TableCell>{item.manHour}</TableCell>
-                <TableCell>{item.totalManHour}</TableCell>
+      <Paper elevation={0} className="my-4 flex items-center gap-3 px-5 py-3 pb-10 pl-10 pr-10 pt-5">
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell className="text-sm text-blue-700">
+                  <strong>現場名</strong>
+                </TableCell>
+                <TableCell className="text-sm text-blue-700">
+                  <strong>現場開始日時</strong>
+                </TableCell>
+                <TableCell className="text-sm text-blue-700">
+                  <strong>現場最終日時</strong>
+                </TableCell>
+                <TableCell className="text-sm text-blue-700">
+                  <strong>対象月の工数</strong>
+                </TableCell>
+                <TableCell className="text-sm text-blue-700">
+                  <strong>総工数</strong>
+                </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {aggregatemanhours.data.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell className="text-base">{item.name}</TableCell>
+                  <TableCell className="text-base">{item.startAt}</TableCell>
+                  <TableCell className="text-base">{item.endAt}</TableCell>
+                  <TableCell className="text-base">{item.manHour}</TableCell>
+                  <TableCell className="text-base">{item.totalManHour}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
     </div>
   );
 }
