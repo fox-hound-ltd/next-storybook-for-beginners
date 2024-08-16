@@ -8,8 +8,8 @@ const aggregatemanours: AggregateManHourData = {
   data: [
     {
       name: '現場１',
-      startAt: '2022/04/01',
-      endAt: '2022/04/30',
+      startAt: '2019-08-24',
+      endAt: '2019-08-24',
       manHour: 1,
       totalManHour: 1,
     },

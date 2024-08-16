@@ -58,7 +58,7 @@ export default function AggregateManHourComponent({ aggregatemanhours }: { aggre
           表示
         </Button>
       </div>
-      <Paper elevation={0} className="my-4 flex items-center gap-3 px-5 py-3 pb-10 pl-10 pr-10 pt-5">
+      <Paper elevation={0} className="my-4 flex items-center pb-10 pl-10 pr-10 pt-5">
         <TableContainer>
           <Table>
             <TableHead>
@@ -66,16 +66,16 @@ export default function AggregateManHourComponent({ aggregatemanhours }: { aggre
                 <TableCell className="text-sm text-blue-700">
                   <strong>現場名</strong>
                 </TableCell>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="w-[150px] p-2 text-sm text-blue-700">
                   <strong>現場開始日時</strong>
                 </TableCell>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="w-[150px] p-2 text-sm text-blue-700">
                   <strong>現場最終日時</strong>
                 </TableCell>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="w-[110px] p-2 text-sm text-blue-700">
                   <strong>対象月の工数</strong>
                 </TableCell>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="w-[80px] p-2 text-sm text-blue-700">
                   <strong>総工数</strong>
                 </TableCell>
               </TableRow>
@@ -83,11 +83,11 @@ export default function AggregateManHourComponent({ aggregatemanhours }: { aggre
             <TableBody>
               {aggregatemanhours.data.map((item, index) => (
                 <TableRow key={index}>
-                  <TableCell className="text-base">{item.name}</TableCell>
-                  <TableCell className="text-base">{item.startAt}</TableCell>
-                  <TableCell className="text-base">{item.endAt}</TableCell>
-                  <TableCell className="text-base">{item.manHour}</TableCell>
-                  <TableCell className="text-base">{item.totalManHour}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">{item.name}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">{item.startAt.replaceAll('-', '/')}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">{item.endAt.replaceAll('-', '/')}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">{item.manHour}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">{item.totalManHour}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
