@@ -9,7 +9,7 @@ const aggregatepaidvacations: AggregatePaidVacationData = {
     {
       name: '社員１',
       count: 1,
-      aggregationPeriod: '2022/04/30',
+      aggregationPeriod: '2022-04-30',
     },
   ],
 };

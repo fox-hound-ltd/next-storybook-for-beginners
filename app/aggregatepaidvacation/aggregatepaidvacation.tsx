@@ -16,18 +16,18 @@ export default function AggregatePaidVacationComponent({
       <Typography className="font-noto-sans-jp text-center text-2xl font-bold leading-[80px] text-blue-700">
         <strong>有給休暇集計</strong>
       </Typography>
-      <Paper elevation={0} className="my-4 flex items-center gap-3 pb-10 pl-10 pr-10 pt-5">
+      <Paper elevation={0} className="my-4 flex items-center pb-10 pl-10 pr-10 pt-5">
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="p-2 text-sm text-blue-700">
                   <strong>社員名</strong>
                 </TableCell>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="p-2 text-sm text-blue-700">
                   <strong>集計期間</strong>
                 </TableCell>
-                <TableCell className="text-sm text-blue-700">
+                <TableCell className="w-[120px] p-2 text-sm text-blue-700">
                   <strong>有給取得日数</strong>
                 </TableCell>
               </TableRow>
@@ -35,11 +35,11 @@ export default function AggregatePaidVacationComponent({
             <TableBody>
               {aggregatepaidvacations.data.map((item, index) => (
                 <TableRow key={index}>
-                  <TableCell className="text-base">{item.name}</TableCell>
-                  <TableCell className="text-base">
-                    {item.aggregationPeriod} ~ {date}
+                  <TableCell className="px-2 py-4 text-base">{item.name}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">
+                    {item.aggregationPeriod} ~ {date.replaceAll('/', '-')}
                   </TableCell>
-                  <TableCell className="text-base">{item.count}</TableCell>
+                  <TableCell className="px-2 py-4 text-base">{item.count}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
