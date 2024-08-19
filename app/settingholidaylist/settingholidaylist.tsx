@@ -26,7 +26,7 @@ export default function SettingHolidayListComponent({
   for (let i = 0; i < 5; i++) {
     years.push(currentYear - i);
   }
-  console.log(settingholidaylist);
+
   return (
     <div className="flex h-[687px] justify-center px-3 pb-0 pt-3">
       <div className="w-[830px] justify-center px-0 pb-10 pt-5">
