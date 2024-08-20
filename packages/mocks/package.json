@@ -4,11 +4,11 @@
   "type": "module",
   "dependencies": {
     "@stoplight/prism-cli": "^5.9.0",
-    "@typespec/compiler": "0.59.0",
-    "@typespec/http": "0.59.0",
+    "@typespec/compiler": "0.59.1",
+    "@typespec/http": "0.59.1",
     "@typespec/openapi": "0.59.0",
-    "@typespec/openapi3": "0.59.0",
-    "@typespec/rest": "0.59.0",
+    "@typespec/openapi3": "0.59.1",
+    "@typespec/rest": "0.59.1",
     "@typespec/versioning": "0.59.0"
   },
   "private": true,
