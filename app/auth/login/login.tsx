@@ -3,7 +3,7 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { LockOutlined } from '@mui/icons-material';
-import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Container, Grid2 as Grid, Link, TextField, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import { useFormState } from 'react-dom';
 
@@ -29,7 +29,7 @@ export default function Login({ onSubmit }: { onSubmit: typeof loginAction }) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" action={action} {...getFormProps(form)} className="mt-2">
+        <Box component="form" action={action} className="mt-2" {...getFormProps(form)}>
           <TextField
             margin="normal"
             required
@@ -58,12 +58,12 @@ export default function Login({ onSubmit }: { onSubmit: typeof loginAction }) {
             ログイン
           </Button>
           <Grid container>
-            <Grid item xs>
+            <Grid size={6}>
               <Link component={NextLink} href="#" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
-            <Grid item>
+            <Grid size={6}>
               <Link component={NextLink} href="register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>

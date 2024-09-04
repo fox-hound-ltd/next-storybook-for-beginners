@@ -3,7 +3,7 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { LockOutlined } from '@mui/icons-material';
-import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Container, Grid2 as Grid, Link, TextField, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import { useFormState } from 'react-dom';
 
@@ -31,7 +31,7 @@ export default function Register({ onSubmit, registered }: { onSubmit: typeof re
           </Typography>
           <Box component="form" action={action} {...getFormProps(form)} className="mt-6">
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   required
                   fullWidth
@@ -43,7 +43,7 @@ export default function Register({ onSubmit, registered }: { onSubmit: typeof re
                   helperText={fields.email.errors}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   required
                   fullWidth
@@ -61,7 +61,7 @@ export default function Register({ onSubmit, registered }: { onSubmit: typeof re
               登録
             </Button>
             <Grid container justifyContent="flex-end">
-              <Grid item>
+              <Grid size="auto">
                 <Link component={NextLink} href="login" variant="body2">
                   Already have an account? Sign in
                 </Link>
