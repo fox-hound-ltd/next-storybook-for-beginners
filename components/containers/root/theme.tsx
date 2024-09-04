@@ -17,6 +17,9 @@ const roboto = Roboto({
 
 export const theme = createTheme(
   {
+    cssVariables: {
+      colorSchemeSelector: 'class',
+    },
     typography: {
       fontFamily: roboto.style.fontFamily,
     },
