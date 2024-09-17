@@ -1,6 +1,7 @@
 import { SubmissionResult } from '@conform-to/react';
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
+import { ComponentProps } from 'react';
 
 import Register from './register';
 
@@ -21,10 +22,10 @@ export const Main: StoryObj<typeof meta> = {};
 
 export const Error: StoryObj<typeof meta> = {
   args: {
-    onSubmit: fn((_, formData) => {
+    onSubmit: fn<ComponentProps<typeof Register>['onSubmit']>((_, formData) => {
       'use server';
       const result: SubmissionResult = {
-        initialValue: Object.fromEntries(formData.entries()),
+        initialValue: Object.fromEntries(formData.entries()) as Record<string, string>,
         status: 'error',
         error: { '': ['正常に登録できませんでした'] },
       };

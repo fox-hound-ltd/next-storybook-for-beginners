@@ -1,6 +1,7 @@
 import { SubmissionResult } from '@conform-to/react';
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
+import { ComponentProps } from 'react';
 
 import Login from './login';
 
@@ -20,10 +21,10 @@ export const Main: StoryObj<typeof meta> = {};
 
 export const Error: StoryObj<typeof meta> = {
   args: {
-    onSubmit: fn((_, formData) => {
+    onSubmit: fn<ComponentProps<typeof Login>['onSubmit']>((_, formData) => {
       'use server';
       const result: SubmissionResult = {
-        initialValue: Object.fromEntries(formData.entries()),
+        initialValue: Object.fromEntries(formData.entries()) as Record<string, string>,
         status: 'error',
         error: { '': ['メールアドレスかパスワードに誤りがあります'] },
       };
