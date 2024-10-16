@@ -1,6 +1,8 @@
 # 01 ダッシュボードページの作成
 
-[ダッシュボードページ](https://mui.com/material-ui/getting-started/templates/dashboard/)をアプリケーションに作成する
+以下画像のダッシュボード画面を参考にアプリケーションに作成する
+
+![dashboard sample](image.png)
 
 チャートコンポーネントは作成済みなので、参考にしつつコンポーネントから作成を行う
 
