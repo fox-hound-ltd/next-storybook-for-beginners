@@ -2,6 +2,8 @@
 
 [ダッシュボードページ](https://mui.com/material-ui/getting-started/templates/dashboard/)をアプリケーションに作成する
 
+![alt text](image.png)
+
 チャートコンポーネントは作成済みなので、参考にしつつコンポーネントから作成を行う
 
 ## コンポーネントとstorybookの作成
