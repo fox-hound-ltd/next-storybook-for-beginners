@@ -10,7 +10,10 @@ import { useFormState } from 'react-dom';
 import { type registerAction } from 'lib/actions/auth';
 import { validation } from 'lib/validations/auth';
 
-export default function Register({ onSubmit, registered }: { onSubmit: typeof registerAction; registered?: boolean }) {
+export default function Register({
+  onSubmit,
+  registered,
+}: Readonly<{ onSubmit: typeof registerAction; registered?: boolean }>) {
   const [lastResult, action] = useFormState(onSubmit, undefined);
   const [form, fields] = useForm({
     lastResult,
