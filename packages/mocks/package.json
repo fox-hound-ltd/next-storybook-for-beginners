@@ -4,7 +4,7 @@
   "type": "module",
   "dependencies": {
     "@stoplight/prism-cli": "^5.12.0",
-    "@typespec/compiler": "0.65.2",
+    "@typespec/compiler": "0.65.3",
     "@typespec/http": "0.65.0",
     "@typespec/openapi": "0.65.0",
     "@typespec/openapi3": "0.65.0",
