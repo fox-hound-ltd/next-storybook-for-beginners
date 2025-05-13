@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "type": "module",
   "dependencies": {
-    "@stoplight/prism-cli": "^5.12.0",
-    "@typespec/compiler": "0.67.1",
-    "@typespec/http": "0.67.1",
-    "@typespec/openapi": "0.67.1",
-    "@typespec/openapi3": "0.67.1",
-    "@typespec/rest": "0.67.1",
-    "@typespec/versioning": "0.67.1"
+    "@stoplight/prism-cli": "^5.14.2",
+    "@typespec/compiler": "1.0.0",
+    "@typespec/http": "1.0.1",
+    "@typespec/openapi": "1.0.0",
+    "@typespec/openapi3": "1.0.0",
+    "@typespec/rest": "0.70.0",
+    "@typespec/versioning": "0.70.0"
   },
   "private": true,
   "scripts": {
