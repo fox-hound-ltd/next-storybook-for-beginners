@@ -1,7 +1,7 @@
 import { SubmissionResult } from '@conform-to/react';
-import { Meta, StoryObj } from '@storybook/react';
-import { expect, fn, userEvent, within } from '@storybook/test';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 import Register from './register';
 

@@ -2,13 +2,7 @@ import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
   stories: ['../app/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y', //👈 The a11y addon goes here
-    '@storybook/addon-themes',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-a11y', '@storybook/addon-themes', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/nextjs',
     options: {},

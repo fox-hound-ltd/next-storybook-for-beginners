@@ -27,7 +27,7 @@
 1. `app/dashboard/dashboard.stories.tsx` を作成
 1. ダッシュボードページを参考にレイアウトを整える
 
-Grid2 as Gridを使用し以下のレイアウトに調整を行う
+Gridを使用し以下のレイアウトに調整を行う
 
 - chart: md:8 lg:9
 - deposit: md:4 lg:3
