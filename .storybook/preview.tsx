@@ -1,6 +1,6 @@
 import { CssBaseline, StyledEngineProvider, ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/nextjs';
 import { Provider } from 'jotai';
 import React from 'react';
 import { setErrorMap } from 'zod';

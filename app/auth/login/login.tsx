@@ -3,7 +3,7 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { LockOutlined } from '@mui/icons-material';
-import { Avatar, Box, Button, Container, Grid2 as Grid, Link, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import { useFormState } from 'react-dom';
 
